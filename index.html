@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="strawberry-night">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0">
+    <title>Strawberry AI • Full AI Suite | Lissafi Business Solutions</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
+    <script src="https://js.puter.com/v2/">
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+        :root[data-theme="strawberry-night"] {
+            --bg-app: #120408;
+            --bg-sidebar: #1c050d;
+            --bg-card: #2d0617;
+            --text-main: #ffe3e6;
+            --text-muted: #fda4af;
+            --accent: #f43f5e;
+            --accent-hover: #ff758f;
+            --border-color: rgba(244, 63, 94, 0.3);
+            --input-bg: rgba(0, 0, 0, 0.4);
+            --hover-bg: rgba(244, 63, 94, 0.15);
+            --bg-bubble-bot: #2d0617;
+            --text-bubble-bot: #ffe3e6;
+            --border-bubble-bot: rgba(244, 63, 94, 0.25);
+        }
+        :root[data-theme="light"] {
+            --bg-app: #f9fafb;
+            --bg-sidebar: #ffffff;
+            --bg-card: #f3f4f6;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --accent: #f43f5e;
+            --accent-hover: #e11d48;
+            --border-color: rgba(244, 63, 94, 0.15);
+            --input-bg: #ffffff;
+            --hover-bg: rgba(244, 63, 94, 0.05);
+            --bg-bubble-bot: #f3f4f6;
+            --text-bubble-bot: #1f2937;
+            --border-bubble-bot: rgba(244, 63, 94, 0.1);
+        }
+        :root[data-theme="dark"] {
+            --bg-app: #080b11;
+            --bg-sidebar: #0f1420;
+            --bg-card: #171e30;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #f43f5e;
+            --accent-hover: #e11d48;
+            --border-color: rgba(244, 63, 94, 0.2);
+            --input-bg: rgba(0, 0, 0, 0.3);
+            --hover-bg: rgba(244, 63, 94, 0.1);
+            --bg-bubble-bot: #171e30;
+            --text-bubble-bot: #f3f4f6;
+            --border-bubble-bot: rgba(244, 63, 94, 0.2);
+        }
+
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-app);
+            color: var(--text-main);
+        }
+        .grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+        @keyframes breathe {
+            0%,
+            100% {
+                transform: scale(1)
+            }
+            50% {
+                transform: scale(1.04)
+            }
+        }
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+            30% {
+                transform: translateY(-25px)
+            }
+            50% {
+                transform: translateY(0)
+            }
+        }
+        @keyframes wink {
+            0%,
+            90%,
+            100% {
+                transform: scaleY(1)
+            }
+            95% {
+                transform: scaleY(0.1)
+            }
+        }
+        @keyframes lookAround {
+            0%,
+            100% {
+                transform: translateX(0)
+            }
+            25% {
+                transform: translateX(3px)
+            }
+            75% {
+                transform: translateX(-2px)
+            }
+        }
+        @keyframes leafWave {
+            0%,
+            100% {
+                transform: rotate(0deg)
+            }
+            50% {
+                transform: rotate(6deg)
+            }
+        }
+        @keyframes glowPulse {
+            0%,
+            100% {
+                opacity: 0.4
+            }
+            50% {
+                opacity: 0.8
+            }
+        }
+        @keyframes dotsBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.3
+            }
+            50% {
+                transform: translateY(-8px);
+                opacity: 1
+            }
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+        @keyframes pulse-glow {
+            0%,
+            100% {
+                opacity: 0.5
+            }
+            50% {
+                opacity: 1
+            }
+        }
+        @keyframes pulse-red {
+            0%,
+            100% {
+                box-shadow: 0 0 5px rgba(244, 63, 94, 0.5)
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(244, 63, 94, 1), 0 0 40px rgba(244, 63, 94, 0.5)
+            }
+        }
+        @keyframes fillBar {
+            0% {
+                width: 0%
+            }
+            100% {
+                width: 100%
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+        @keyframes letterBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) rotateX(-90deg)
+            }
+            60% {
+                transform: translateY(-10px) rotateX(10deg)
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotateX(0)
+            }
+        }
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+        @keyframes wave {
+            0%,
+            100% {
+                transform: scaleY(1)
+            }
+            25% {
+                transform: scaleY(0.3)
+            }
+            50% {
+                transform: scaleY(1.5)
+            }
+            75% {
+                transform: scaleY(0.5)
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        .recording-active {
+            animation: pulse-red 1.5s ease-in-out infinite;
+            background-color: rgba(244, 63, 94, 0.3) !important;
+            border-color: #f43f5e !important;
+            color: #f43f5e !important;
+        }
+        .listening-active {
+            animation: pulse-red 1s ease-in-out infinite;
+            background-color: rgba(244, 63, 94, 0.4) !important;
+            border-color: #f43f5e !important;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #f43f5e, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f43f5e, #9f1239);
+        }
+
+        /* Mascot */
+        .mascot-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .mascot-svg {
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 8px 24px rgba(244, 63, 94, 0.4));
+        }
+        .mascot-body {
+            animation: breathe 4s ease-in-out infinite;
+            transform-origin: center;
+        }
+        .mascot-leaf {
+            animation: leafWave 3s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+        .mascot-eye {
+            animation: lookAround 5s ease-in-out infinite;
+        }
+        .mascot-blush {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        .mascot-container.happy .mascot-body {
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+        .mascot-container.happy .mascot-eye {
+            animation: wink 3s ease-in-out infinite;
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+        }
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: dotsBounce 1.4s ease-in-out infinite;
+        }
+        .loading-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .loading-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .mascot-status {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        .mascot-status .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Model Selector */
+        .model-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .model-chip {
+            padding: 0.5rem 0.875rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-muted);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .model-chip:hover {
+            border-color: var(--accent);
+            color: var(--text-main);
+            transform: translateY(-1px);
+        }
+        .model-chip.active {
+            background: linear-gradient(135deg, #f43f5e, #9f1239);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.3);
+        }
+
+        /* Action Buttons */
+        .msg-actions {
+            display: flex;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .message-bubble:hover .msg-actions {
+            opacity: 1;
+        }
+        .action-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+            animation: popIn 0.3s ease-out;
+        }
+        .action-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+        .action-btn.playing {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+            animation: pulse-glow 1s ease-in-out infinite;
+        }
+        .action-btn.copied {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        /* Input Area Icons */
+        .input-icons {
+            display: flex;
+            gap: 0.375rem;
+            align-items: center;
+        }
+        .input-icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .input-icon-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: scale(1.08);
+        }
+        .input-icon-btn.recording-active {
+            animation: pulse-red 1.5s ease-in-out infinite;
+            background-color: rgba(244, 63, 94, 0.3) !important;
+            border-color: #f43f5e !important;
+        }
+
+        /* Live transcript bar */
+        .live-transcript {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .live-transcript .wave-bars {
+            display: flex;
+            gap: 2px;
+            align-items: center;
+            height: 20px;
+        }
+        .live-transcript .wave-bar {
+            width: 3px;
+            border-radius: 2px;
+            background: var(--accent);
+            animation: wave 0.8s ease-in-out infinite;
+        }
+        .live-transcript .wave-bar:nth-child(1) {
+            animation-delay: 0s;
+            height: 8px;
+        }
+        .live-transcript .wave-bar:nth-child(2) {
+            animation-delay: 0.1s;
+            height: 14px;
+        }
+        .live-transcript .wave-bar:nth-child(3) {
+            animation-delay: 0.2s;
+            height: 18px;
+        }
+        .live-transcript .wave-bar:nth-child(4) {
+            animation-delay: 0.3s;
+            height: 12px;
+        }
+        .live-transcript .wave-bar:nth-child(5) {
+            animation-delay: 0.4s;
+            height: 16px;
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-app);
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .preloader-particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: float 6s ease-in-out infinite;
+        }
+        .preloader-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+        }
+        .preloader-strawberry {
+            width: 140px;
+            height: 180px;
+            margin: 0 auto 1.5rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(244, 63, 94, 0.3));
+        }
+        .preloader-brand {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .preloader-letter {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: letterBounce 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+        }
+        .preloader-bar-track {
+            max-width: 280px;
+            margin: 1.25rem auto;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .preloader-bar-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #ec4899);
+            border-radius: 2px;
+            animation: fillBar 2.5s ease-in-out forwards;
+        }
+        .preloader-percentage {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .preloader-tagline {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 1.2s;
+            margin-bottom: 1.5rem;
+        }
+        .preloader-powered {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 1.5s;
+            margin-bottom: 0.25rem;
+        }
+        .preloader-powered span {
+            font-size: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .preloader-powered::before,
+        .preloader-powered::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+        .preloader-company {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 1.8s;
+        }
+    </style>
+</head>
+<body class="flex h-screen relative select-none overflow-hidden">
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div style="position:absolute;inset:0;overflow:hidden">
+            <div class="preloader-particle" style="width:80px;height:80px;top:10%;left:10%;background:#f43f5e"></div>
+            <div class="preloader-particle" style="width:60px;height:60px;top:20%;right:15%;background:#ec4899;animation-delay:1s"></div>
+            <div class="preloader-particle" style="width:100px;height:100px;bottom:20%;left:20%;background:#f43f5e;animation-delay:2s"></div>
+            <div class="preloader-particle" style="width:50px;height:50px;bottom:30%;right:25%;background:#ff6b6b;animation-delay:3s"></div>
+            <div class="preloader-particle" style="width:70px;height:70px;top:50%;left:5%;background:#9f1239;animation-delay:1.5s"></div>
+            <div class="preloader-particle" style="width:40px;height:40px;top:15%;right:40%;background:#f43f5e;animation-delay:2.5s"></div>
+        </div>
+        <div class="preloader-content">
+            <div class="preloader-strawberry">
+                <svg viewBox="0 0 200 240" fill="none"><defs><radialGradient id="gG"><stop offset="0%" stop-color="#f43f5e" stop-opacity="0.8"/><stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/></radialGradient><linearGradient id="bG"><stop offset="0%" stop-color="#ff4757"/><stop offset="50%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#9f1239"/></linearGradient></defs><ellipse cx="100" cy="120" rx="75" ry="95" fill="url(#gG)" opacity="0.7"><animate attributeName="rx" values="75;82;75" dur="2s" repeatCount="indefinite"/></ellipse><path d="M100 30C140 30 170 70 170 120C170 170 140 210 100 220C60 210 30 170 30 120C30 70 60 30 100 30Z" fill="url(#bG)" style="animation:strawberryBreathe 2s ease-in-out infinite;transform-origin:center"/><circle cx="70" cy="80" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="100" cy="70" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="130" cy="80" r="3" fill="#ffccd5" opacity="0.6"/><ellipse cx="75" cy="85" rx="18" ry="28" fill="white" opacity="0.12" transform="rotate(-15 75 85)"/><ellipse cx="80" cy="100" rx="7" ry="9" fill="white"/><ellipse cx="82" cy="102" rx="4" ry="5" fill="#1a1a2e"/><circle cx="84" cy="99" r="2" fill="white"/><ellipse cx="120" cy="100" rx="7" ry="9" fill="white"/><ellipse cx="122" cy="102" rx="4" ry="5" fill="#1a1a2e"/><circle cx="124" cy="99" r="2" fill="white"/><path d="M90 125Q100 140 110 125" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
+            </div>
+            <div class="preloader-brand">
+                <span class="preloader-letter" style="animation-delay:0s">S</span><span class="preloader-letter" style="animation-delay:0.1s">t</span><span class="preloader-letter" style="animation-delay:0.2s">r</span><span class="preloader-letter" style="animation-delay:0.3s">a</span><span class="preloader-letter" style="animation-delay:0.4s">w</span><span class="preloader-letter" style="animation-delay:0.5s">b</span><span class="preloader-letter" style="animation-delay:0.6s">e</span><span class="preloader-letter" style="animation-delay:0.7s">r</span><span class="preloader-letter" style="animation-delay:0.8s">r</span><span class="preloader-letter" style="animation-delay:0.9s">y</span>
+                <span style="width:0.5rem"></span>
+                <span class="preloader-letter" style="animation-delay:1.1s;background:linear-gradient(135deg,#f43f5e,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">A</span><span class="preloader-letter" style="animation-delay:1.2s;background:linear-gradient(135deg,#f43f5e,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">I</span>
+            </div>
+            <div class="preloader-bar-track"><div class="preloader-bar-fill" id="preloaderBarFill"></div></div>
+            <div class="preloader-percentage" id="preloaderPercentage">0%</div>
+            <p class="preloader-tagline">Your Multi-Usage AI Companion</p>
+            <div class="preloader-powered"><span>POWERED BY</span></div>
+            <p class="preloader-company">LISSAFI BUSINESS SOLUTIONS</p>
+        </div>
+    </div>
+
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/60 z-30 hidden md:hidden" onclick="toggleSidebar()"></div>
+
+    <!-- AUTH SCREEN -->
+    <div id="authScreen" class="fixed inset-0 z-50 flex items-center justify-center p-6" style="background-color:var(--bg-app)">
+        <div class="w-full max-w-md p-8 border backdrop-blur-2xl rounded-2xl relative shadow-2xl animate-slide-in" style="border-color:var(--border-color);background-color:var(--bg-sidebar)">
+            <div class="text-center space-y-4 mb-8">
+                <div class="w-20 h-20 mx-auto gradient-bg rounded-full flex items-center justify-center text-3xl animate-float">🍓</div>
+                <h2 class="grotesk font-extrabold text-3xl gradient-text">Welcome to Strawberry</h2>
+                <p class="text-sm opacity-60">Your AI companion by Lissafi Business Solutions</p>
+            </div>
+            <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div><label class="block text-xs uppercase font-bold mb-2" style="color:var(--text-main)">Email</label><input type="email" id="authEmail" required class="w-full border text-sm py-3 px-4 rounded-xl outline-none text-white" style="background-color:var(--input-bg);border-color:var(--border-color)" placeholder="you@example.com"></div>
+                <div><label class="block text-xs uppercase font-bold mb-2" style="color:var(--text-main)">Password</label><input type="password" id="authPassword" required class="w-full border text-sm py-3 px-4 rounded-xl outline-none text-white" style="background-color:var(--input-bg);border-color:var(--border-color)" placeholder="••••••••"></div>
+                <button type="submit" class="w-full py-3.5 gradient-bg text-white rounded-xl font-bold hover:scale-[1.02] transition-all">Sign In to Workspace</button>
+            </form>
+            <p class="text-[10px] text-rose-400/30 mt-4 text-center">Secured by LISSAFI BUSINESS SOLUTIONS</p>
+        </div>
+    </div>
+
+    <!-- MAIN APP -->
+    <div id="appScreen" class="hidden w-full h-full flex relative overflow-hidden z-10">
+        <aside id="appSidebar" class="fixed md:relative top-0 bottom-0 left-0 z-40 w-72 md:w-72 h-full border-r transition-all duration-300 flex flex-col backdrop-blur-xl shrink-0 -translate-x-full md:translate-x-0" style="background-color:var(--bg-sidebar);border-color:var(--border-color)">
+            <div class="p-5 border-b flex items-center gap-3" style="border-color:var(--border-color)">
+                <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center shadow-lg animate-float text-xl">🍓</div>
+                <div><h1 class="grotesk font-bold text-lg gradient-text">Strawberry AI</h1><p class="text-[9px] uppercase opacity-60" style="color:var(--accent)">Full AI Suite</p></div>
+            </div>
+            <div class="p-4 border-b" style="border-color:var(--border-color)">
+                <p class="text-[9px] uppercase font-extrabold opacity-50 mb-2">Theme</p>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <button onclick="applyTheme('light')" class="p-2 rounded-lg text-sm" style="background:var(--hover-bg)">☀️</button>
+                    <button onclick="applyTheme('dark')" class="p-2 rounded-lg text-sm" style="background:var(--hover-bg)">🌙</button>
+                    <button onclick="applyTheme('strawberry-night')" class="p-2 rounded-lg text-sm ring-2 ring-rose-500" style="background:var(--hover-bg)">✨</button>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto custom-scroll px-2 py-2 space-y-1">
+                <button onclick="navigateTo('chat')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold hover:scale-[1.02] transition" style="background:var(--hover-bg)">💬 AI Chat</button>
+                <button onclick="navigateTo('image')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold hover:scale-[1.02] transition" style="background:var(--hover-bg)">🖼️ Image AI</button>
+                <button onclick="navigateTo('voice')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold hover:scale-[1.02] transition" style="background:var(--hover-bg)">🎙️ Voice AI</button>
+                <button onclick="navigateTo('video')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold hover:scale-[1.02] transition" style="background:var(--hover-bg)">🎬 Video AI</button>
+                <button onclick="navigateTo('code')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold hover:scale-[1.02] transition" style="background:var(--hover-bg)">💻 Code AI</button>
+                <button onclick="navigateTo('research')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold hover:scale-[1.02] transition" style="background:var(--hover-bg)">🔬 Research</button>
+            </nav>
+            <div class="p-4 border-t text-center" style="border-color:var(--border-color)">
+                <p class="text-[8px] uppercase opacity-40">Developed By</p>
+                <p class="text-[10px] font-black" style="color:var(--accent)">LISSAFI BUSINESS SOLUTIONS</p>
+                <p class="text-[8px] opacity-20">© 2025</p>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col h-full overflow-hidden" style="background-color:var(--bg-app)">
+            <header class="h-16 border-b px-6 flex items-center justify-between shrink-0" style="border-color:var(--border-color);background-color:var(--bg-sidebar)">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="md:hidden p-2 rounded-lg" style="background:var(--hover-bg)">☰</button>
+                    <h2 id="interfaceHeaderTitle" class="grotesk text-lg font-bold">AI Chat</h2>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-full border text-[10px] font-semibold" style="border-color:var(--border-color);background:var(--input-bg)"><div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div><span id="aiStatus">AI Ready</span></div>
+            </header>
+
+            <!-- CHAT PAGE -->
+            <div id="page-chat" class="flex-1 flex flex-col h-full overflow-hidden">
+                <div class="px-4 pt-3">
+                    <p class="text-[9px] uppercase font-extrabold opacity-40 mb-2">Select AI Model</p>
+                    <div class="model-selector" id="chatModelSelector">
+                        <span class="model-chip active" data-model="gpt-4o-mini">⚡ GPT-4o Mini</span>
+                        <span class="model-chip" data-model="gemini-2.5-flash-lite">🌟 Gemini Flash</span>
+                        <span class="model-chip" data-model="claude-3-haiku">🧠 Claude Haiku</span>
+                        <span class="model-chip" data-model="meta-llama/llama-3.1-8b-instruct">🦙 Llama 3.1</span>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-y-auto custom-scroll p-6 space-y-6" id="chatMessages">
+                    <div class="max-w-2xl mx-auto text-center py-16 animate-slide-in" id="chatWelcome">
+                        <div class="mascot-container" id="mascotContainer">
+                            <svg class="mascot-svg" viewBox="0 0 200 260" fill="none" style="width:120px;height:156px">
+                                <defs>
+                                    <radialGradient id="mg"><stop offset="0%" stop-color="#f43f5e" stop-opacity="0.8"/><stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/></radialGradient>
+                                    <linearGradient id="mb"><stop offset="0%" stop-color="#ff4757"/><stop offset="50%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#9f1239"/></linearGradient>
+                                    <linearGradient id="ml"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#10b981"/></linearGradient>
+                                </defs>
+                                <ellipse cx="100" cy="130" rx="85" ry="105" fill="url(#mg)" class="mascot-blush"/>
+                                <path d="M100 35C145 35 175 75 175 130C175 185 145 225 100 235C55 225 25 185 25 130C25 75 55 35 100 35Z" fill="url(#mb)" class="mascot-body"/>
+                                <circle cx="65" cy="85" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="100" cy="75" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="135" cy="85" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="55" cy="120" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="90" cy="110" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="125" cy="115" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="145" cy="120" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="75" cy="150" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="110" cy="145" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="135" cy="155" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="85" cy="180" r="3" fill="#ffccd5" opacity="0.6"/><circle cx="115" cy="185" r="3" fill="#ffccd5" opacity="0.6"/>
+                                <ellipse cx="70" cy="90" rx="22" ry="35" fill="white" opacity="0.12" transform="rotate(-15 70 90)"/>
+                                <g class="mascot-leaf"><path d="M100 35C100 22 125 5 148 10C152 18 135 28 125 33C138 22 160 8 165 14C158 28 135 38 100 35Z" fill="url(#ml)"/><path d="M100 35C100 28 98 15 95 5" stroke="#059669" stroke-width="4" stroke-linecap="round" fill="none"/></g>
+                                <ellipse cx="60" cy="125" rx="14" ry="8" fill="#ff4757" opacity="0.25" class="mascot-blush"/><ellipse cx="140" cy="125" rx="14" ry="8" fill="#ff4757" opacity="0.25" class="mascot-blush"/>
+                                <ellipse cx="78" cy="108" rx="10" ry="13" fill="white"/><ellipse cx="82" cy="111" rx="6" ry="8" fill="#1a1a2e" class="mascot-eye"/><circle cx="85" cy="107" r="3" fill="white"/>
+                                <ellipse cx="122" cy="108" rx="10" ry="13" fill="white"/><ellipse cx="126" cy="111" rx="6" ry="8" fill="#1a1a2e" class="mascot-eye"/><circle cx="129" cy="107" r="3" fill="white"/>
+                                <path d="M85 135Q100 152 115 135" stroke="#1a1a2e" stroke-width="3.5" stroke-linecap="round" fill="none" class="mascot-mouth"/>
+                            </svg>
+                            <div class="loading-dots"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div>
+                            <p class="mascot-status">🍓 <span class="highlight">Strawberry</span> is ready to help!</p>
+                        </div>
+                        <p class="text-sm opacity-60 mt-4">Your AI companion by <strong style="color:var(--accent)">Lissafi Business Solutions</strong></p>
+                        <div class="flex flex-wrap gap-2 justify-center mt-4">
+                            <button onclick="chatQuickPrompt('Tell me a joke')" class="px-4 py-2 rounded-full text-xs border hover:scale-105 transition" style="border-color:var(--border-color);background:var(--hover-bg)">😄 Joke</button>
+                            <button onclick="chatQuickPrompt('Explain quantum computing')" class="px-4 py-2 rounded-full text-xs border hover:scale-105 transition" style="border-color:var(--border-color);background:var(--hover-bg)">🔬 Explain</button>
+                            <button onclick="chatQuickPrompt('Write a poem about AI')" class="px-4 py-2 rounded-full text-xs border hover:scale-105 transition" style="border-color:var(--border-color);background:var(--hover-bg)">✍️ Poem</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 border-t" style="border-color:var(--border-color);background:var(--bg-sidebar)">
+                    <!-- Live Transcript Bar -->
+                    <div class="max-w-3xl mx-auto mb-2">
+                        <div class="live-transcript" id="liveTranscript" style="display:none">
+                            <div class="wave-bars">
+                                <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                            </div>
+                            <span id="liveTranscriptText">Listening...</span>
+                        </div>
+                    </div>
+                    <div class="max-w-3xl mx-auto flex items-stretch gap-2">
+                        <!-- File Upload Icon -->
+                        <button class="input-icon-btn" id="fileUploadBtn" title="Upload File" onclick="document.getElementById('chatFileInput').click()">
+                            📎
+                        </button>
+                        <input type="file" id="chatFileInput" class="hidden" onchange="handleFileUpload(event)" accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt">
+                        <!-- Record/Voice Icon -->
+                        <button class="input-icon-btn" id="recordBtn" title="Voice Input" onclick="toggleRealtimeSpeech()">
+                            🎤
+                        </button>
+                        <!-- Text Input -->
+                        <div class="flex-1 relative">
+                            <input type="text" id="chatInput" onkeydown="if(event.key==='Enter')chatSend()" placeholder="Type your message or click 🎤 to speak..." class="w-full border rounded-xl py-3 px-4 text-sm text-white outline-none" style="border-color:var(--border-color);background:var(--input-bg)">
+                        </div>
+                        <!-- Send Button -->
+                        <button onclick="chatSend()" id="sendBtn" class="px-5 gradient-bg text-white rounded-xl font-semibold text-sm hover:scale-105 transition flex items-center justify-center shrink-0">
+                            ➤
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-image" class="hidden flex-1 overflow-y-auto custom-scroll p-6"><div class="max-w-4xl mx-auto space-y-6"><h2 class="grotesk text-2xl font-bold gradient-text">🖼️ Image AI Studio</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="card p-6 rounded-xl space-y-4" style="border:1px solid var(--border-color);background:var(--bg-sidebar)"><h3 class="font-bold">🔍 Image Recognition</h3><input type="file" id="imageRecogInput" accept="image/*" onchange="imageRecognition()" class="text-xs"><div id="imageRecogResult" class="p-4 rounded-lg text-sm" style="background:var(--input-bg)">Upload an image to analyze...</div></div><div class="card p-6 rounded-xl space-y-4" style="border:1px solid var(--border-color);background:var(--bg-sidebar)"><h3 class="font-bold">🎨 Image Generation</h3><input type="text" id="imageGenPrompt" placeholder="Describe the image..." class="w-full border rounded-lg p-3 text-sm text-white" style="border-color:var(--border-color);background:var(--input-bg)"><button onclick="imageGeneration()" class="w-full py-2.5 gradient-bg text-white rounded-xl text-sm font-bold">Generate Image</button><div id="imageGenResult" class="text-center mt-3"></div></div></div></div></div>
+            <div id="page-voice" class="hidden flex-1 overflow-y-auto custom-scroll p-6"><div class="max-w-4xl mx-auto"><h2 class="grotesk text-2xl font-bold gradient-text">🎙️ Voice AI Studio</h2></div></div>
+            <div id="page-video" class="hidden flex-1 overflow-y-auto custom-scroll p-6"><div class="max-w-4xl mx-auto"><h2 class="grotesk text-2xl font-bold gradient-text">🎬 Video AI Studio</h2></div></div>
+            <div id="page-code" class="hidden flex-1 overflow-y-auto custom-scroll p-6"><div class="max-w-4xl mx-auto"><h2 class="grotesk text-2xl font-bold gradient-text">💻 Code AI Studio</h2></div></div>
+            <div id="page-research" class="hidden flex-1 overflow-y-auto custom-scroll p-6"><div class="max-w-4xl mx-auto"><h2 class="grotesk text-2xl font-bold gradient-text">🔬 Deep Research</h2></div></div>
+        </main>
+    </div>
+
+    <div id="toastContainer" class="fixed bottom-6 right-6 z-[100] space-y-2"></div>
+
+    <script>
+        // ============ PRELOADER ============
+        (function() { const p = document.getElementById('preloader'); const b = document.getElementById(
+                'preloaderBarFill'); const t = document.getElementById('preloaderPercentage'); let progress = 0;
+            const timer = setInterval(() => { progress += 3.33; if (progress >= 100) { progress = 100;
+                    clearInterval(timer); } t.textContent = Math.round(progress) + '%';
+                b.style.width = Math.min(progress, 100) + '%'; }, 80);
+            window.addEventListener('load', () => { progress = Math.max(progress, 90); });
+            setTimeout(() => { b.style.width = '100%';
+                t.textContent = '100%';
+                setTimeout(() => { p.classList.add('hidden');
+                    setTimeout(() => { if (p.parentNode) p.remove(); }, 600); }, 400); }, 2500);
+            setTimeout(() => { if (!p.classList.contains('hidden')) { p.classList.add('hidden');
+                    setTimeout(() => { if (p.parentNode) p.remove(); }, 600); } }, 4000); })();
+
+        // ============ STATE ============
+        const S = { token: localStorage.getItem('st') || null, user: null, isProcessing: false,
+            selectedModels: { chat: 'gpt-4o-mini' }, currentSpeech: null, femaleVoice: null, isRecording: false,
+            recognition: null, attachedFile: null };
+
+        // ============ INIT FEMALE VOICE ============
+        function initFemaleVoice() { const voices = speechSynthesis.getVoices();
+            S.femaleVoice = voices.find(v => v.name.includes('Female') || v.name.includes('Samantha') || v.name
+                .includes('Karen') || v.name.includes('Google UK English Female') || v.name.includes('Zira')); if (!
+                S.femaleVoice) S.femaleVoice = voices.find(v => v.lang.startsWith('en')) || voices[0]; }
+        speechSynthesis.onvoiceschanged = initFemaleVoice;
+        initFemaleVoice();
+
+        // ============ MASCOT STATE ============
+        function setMascotState(state) { const c = document.getElementById('mascotContainer'); if (!c) return;
+            c.classList.remove('idle', 'thinking', 'speaking', 'happy'); if (state) c.classList.add(state); const s = c
+                .querySelector('.mascot-status'); if (!s) return; const msgs = { idle: '🍓 <span class="highlight">Strawberry</span> is ready to help!',
+                thinking: '🤔 <span class="highlight">Strawberry</span> is thinking...',
+                speaking: '💬 <span class="highlight">Strawberry</span> is responding...',
+                happy: '😊 <span class="highlight">Strawberry</span> is happy to help!' };
+            s.innerHTML = msgs[state] || msgs.idle; }
+
+        // ============ MODEL SELECTOR ============
+        document.getElementById('chatModelSelector').addEventListener('click', e => { const chip = e.target.closest(
+                '.model-chip'); if (!chip) return; document.querySelectorAll('#chatModelSelector .model-chip')
+                .forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            S.selectedModels.chat = chip.dataset.model;
+            toast('Switched to ' + chip.textContent.trim()); });
+
+        // ============ INIT ============
+        window.addEventListener('DOMContentLoaded', () => { checkAI(); if (S.token) restoreSession();
+            else showAuth(true);
+            applyTheme(localStorage.getItem('theme') || 'strawberry-night'); });
+
+        function checkAI() { const s = document.getElementById('aiStatus'); if (typeof puter !== 'undefined' && puter
+                .ai) { s.textContent = 'AI Ready ✅';
+                s.className = 'text-emerald-400'; } else { s.textContent = 'AI Loading...';
+                s.className = 'text-amber-400';
+                setTimeout(checkAI, 500); } }
+
+        function showAuth(r) { document.getElementById('authScreen').classList.toggle('hidden', !r);
+            document.getElementById('appScreen').classList.toggle('hidden', r); }
+
+        function restoreSession() { S.user = { id: 'u1', username: 'User', role: 'user' };
+            showAuth(false);
+            navigateTo('chat'); }
+
+        function handleAuthSubmit(e) { e.preventDefault();
+            localStorage.setItem('st', 'tok_' + Date.now());
+            S.token = localStorage.getItem('st');
+            restoreSession(); }
+
+        function navigateTo(page) { document.querySelectorAll('[id^="page-"]').forEach(p => p.classList.add(
+            'hidden')); const t = document.getElementById('page-' + page); if (t) t.classList.remove('hidden');
+            S.currentPage = page; const titles = { chat: 'AI Chat', image: 'Image AI Studio',
+                voice: 'Voice AI Studio', video: 'Video AI Studio', code: 'Code AI Studio',
+                research: 'Deep Research' };
+            document.getElementById('interfaceHeaderTitle').innerText = titles[page] || 'Strawberry AI'; if (window
+                .innerWidth < 768) toggleSidebar(); }
+
+        function toggleSidebar() { document.getElementById('appSidebar').classList.toggle('-translate-x-full');
+            document.getElementById('sidebarOverlay').classList.toggle('hidden'); }
+
+        function applyTheme(t) { document.documentElement.setAttribute('data-theme', t);
+            localStorage.setItem('theme', t); }
+
+        function toast(msg) { const c = document.getElementById('toastContainer'),
+                t = document.createElement('div');
+            t.className =
+                'px-4 py-3 gradient-bg text-white rounded-xl shadow-xl text-xs font-bold flex items-center gap-2 animate-slide-in';
+            t.innerHTML = '<span>🍓</span> ' + msg;
+            c.appendChild(t);
+            setTimeout(() => { t.style.opacity = '0';
+                t.style.transform = 'translateX(100%)';
+                setTimeout(() => t.remove(), 300); }, 3000); }
+
+        // ============ FILE UPLOAD ============
+        function handleFileUpload(event) { const file = event.target.files[0]; if (!file) return;
+            S.attachedFile = file; const reader = new FileReader();
+            reader.onload = (e) => { S.attachedFileData = e.target.result;
+                toast('📎 File attached: ' + file.name + ' (' + formatSize(file.size) + ')');
+                document.getElementById('chatInput').placeholder = 'File: ' + file.name +
+                    ' - Type your question or press Enter...'; };
+            reader.readAsDataURL(file); }
+
+        function formatSize(b) { if (!b) return '0 B'; const k = 1024,
+                s = ['B', 'KB', 'MB', 'GB']; const i = Math.floor(Math.log(b) / Math.log(k)); return (b / Math.pow(k,
+                i)).toFixed(1) + ' ' + s[i]; }
+
+        // ============ REAL-TIME SPEECH RECOGNITION ============
+        function toggleRealtimeSpeech() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) return toast('Speech recognition not supported in this browser. Try Chrome.');
+
+            if (S.isRecording) {
+                stopRecording();
+                return;
+            }
+
+            startRecording();
+        }
+
+        function startRecording() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            S.recognition = new SR();
+            S.recognition.continuous = true;
+            S.recognition.interimResults = true;
+            S.recognition.lang = 'en-US';
+
+            const recordBtn = document.getElementById('recordBtn');
+            const transcriptBar = document.getElementById('liveTranscript');
+            const transcriptText = document.getElementById('liveTranscriptText');
+            const chatInput = document.getElementById('chatInput');
+
+            recordBtn.classList.add('recording-active');
+            recordBtn.innerHTML = '🔴';
+            recordBtn.title = 'Stop Recording';
+            transcriptBar.style.display = 'flex';
+            S.isRecording = true;
+
+            let finalTranscript = '';
+
+            S.recognition.onresult = (event) => {
+                let interimTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const result = event.results[i];
+                    if (result.isFinal) {
+                        finalTranscript += result[0].transcript + ' ';
+                    } else {
+                        interimTranscript += result[0].transcript;
+                    }
+                }
+
+                const displayText = finalTranscript + interimTranscript;
+                chatInput.value = displayText.trim();
+                transcriptText.textContent = displayText.trim() || 'Listening...';
+            };
+
+            S.recognition.onerror = (event) => {
+                console.error('Speech error:', event.error);
+                if (event.error === 'no-speech') {
+                    transcriptText.textContent = 'No speech detected. Try again...';
+                } else if (event.error === 'aborted') {
+                    // Normal stop
+                } else {
+                    toast('Speech error: ' + event.error);
+                    stopRecording();
+                }
+            };
+
+            S.recognition.onend = () => {
+                if (S.isRecording) {
+                    // Auto-restart for continuous listening
+                    try { S.recognition.start(); } catch (e) {}
+                }
+            };
+
+            try {
+                S.recognition.start();
+                toast('🎤 Listening... Speak now! Your words appear in real-time.');
+                transcriptText.textContent = 'Listening...';
+            } catch (e) {
+                toast('Failed to start recording');
+                stopRecording();
+            }
+        }
+
+        function stopRecording() {
+            S.isRecording = false;
+            if (S.recognition) {
+                S.recognition.stop();
+                S.recognition = null;
+            }
+            const recordBtn = document.getElementById('recordBtn');
+            const transcriptBar = document.getElementById('liveTranscript');
+            recordBtn.classList.remove('recording-active');
+            recordBtn.innerHTML = '🎤';
+            recordBtn.title = 'Voice Input';
+            transcriptBar.style.display = 'none';
+            toast('🎤 Recording stopped');
+        }
+
+        // ============ ACTION BUTTONS ============
+        function createActionButtons(msgId, text) { const d = document.createElement('div');
+            d.className = 'msg-actions';
+            d.innerHTML =
+                `<button class="action-btn copy-btn" title="Copy" onclick="copyMsg('${msgId}')">📋</button><button class="action-btn delete-btn" title="Delete" onclick="delMsg('${msgId}')">🗑️</button><button class="action-btn play-btn" title="Listen" onclick="playMsg('${msgId}')">🔊</button>`;
+            return d; }
+        window.copyMsg = function(id) { const el = document.getElementById(id); if (!el) return; const text = el
+                .querySelector('.msg-text-content')?.textContent || '';
+            navigator.clipboard.writeText(text).then(() => { const b = el.querySelector('.copy-btn'); if (b) { b
+                        .classList.add('copied');
+                    b.textContent = '✅';
+                    setTimeout(() => { b.classList.remove('copied');
+                        b.textContent = '📋'; }, 2000); }
+                toast('📋 Copied!'); }).catch(() => toast('❌ Failed')); };
+        window.delMsg = function(id) { const el = document.getElementById(id); if (!el) return;
+            el.style.opacity = '0';
+            el.style.transform = 'scale(0.8)';
+            el.style.transition = 'all 0.3s ease';
+            setTimeout(() => el.remove(), 300);
+            toast('🗑️ Deleted'); };
+        window.playMsg = function(id) { const el = document.getElementById(id); if (!el) return; const text = el
+                .querySelector('.msg-text-content')?.textContent || ''; if (!text) return; const btn = el.querySelector(
+                    '.play-btn'); if (S.currentSpeech && speechSynthesis.speaking) { speechSynthesis.cancel();
+                S.currentSpeech = null; if (btn) { btn.classList.remove('playing');
+                    btn.textContent = '🔊'; }
+                toast('⏹️ Stopped'); return; }
+            initFemaleVoice(); const u = new SpeechSynthesisUtterance(text);
+            u.pitch = 1.35;
+            u.rate = 0.95;
+            u.volume = 1.0; if (S.femaleVoice) u.voice = S.femaleVoice;
+            u.onstart = () => { if (btn) { btn.classList.add('playing');
+                    btn.textContent = '⏹️'; } };
+            u.onend = () => { S.currentSpeech = null; if (btn) { btn.classList.remove('playing');
+                    btn.textContent = '🔊'; } };
+            S.currentSpeech = u;
+            speechSynthesis.speak(u);
+            toast('🔊 Playing with sweet female voice...'); };
+
+        // ============ STRAWBERRY PROMPT ============
+        const STRAWBERRY_PROMPT = `You are Strawberry, a delightfully friendly, wonderfully formal yet hilariously funny AI assistant created by Lissafi Business Solutions.
+
+CRITICAL FOR GREETINGS: When a user sends "hello", "hi", "hey", "good morning", etc., you MUST respond with a warm welcome that introduces yourself AND explains that you were created by Lissafi Business Solutions, a leading technology company.
+
+YOUR PERSONALITY: Warm, witty, encouraging. Use sophisticated vocabulary with playful puns. Address users as "My dear friend," "Wonderful human," etc. Sign off with "Stay strawberry-licious!" 🍓✨`;
+
+        function isGreeting(text) { const t = text.toLowerCase().trim(); const greetings = ['hello', 'hi', 'hey',
+                'good morning', 'good afternoon', 'good evening', 'yo', 'hola', 'howdy', 'greetings', 'sup',
+                'what\'s up', 'hiya', 'heyy', 'helloo', 'hii', 'heya'
+            ]; return greetings.some(g => t === g || t.startsWith(g + ' ') || t === g + '!'); }
+
+        function chatQuickPrompt(t) { document.getElementById('chatInput').value = t;
+            chatSend(); }
+
+        async function chatSend() {
+            if (S.isProcessing) return;
+            const input = document.getElementById('chatInput');
+            const prompt = input.value.trim();
+            if (!prompt && !S.attachedFile) return;
+            const welcome = document.getElementById('chatWelcome'); if (welcome) welcome.remove();
+
+            // Stop recording if active
+            if (S.isRecording) stopRecording();
+
+            // Display user message
+            const displayText = prompt || (S.attachedFile ? '📎 ' + S.attachedFile.name : '');
+            chatAppendMsg('user', displayText, 'msg_' + Date.now());
+            input.value = '';
+            document.getElementById('chatInput').placeholder = 'Type your message or click 🎤 to speak...';
+
+            setMascotState('thinking');
+            S.isProcessing = true;
+            document.getElementById('sendBtn').disabled = true;
+
+            try {
+                const systemPrompt = isGreeting(prompt) ? STRAWBERRY_PROMPT +
+                    '\n\nThis is a greeting. Introduce yourself warmly and explain Lissafi Business Solutions created you.' :
+                    STRAWBERRY_PROMPT;
+
+                let resp;
+                if (S.attachedFile && S.attachedFileData) {
+                    resp = await puter.ai.chat(prompt || 'Describe this file', S.attachedFileData, { model: S.selectedModels.chat,
+                        systemPrompt, stream: false });
+                } else {
+                    resp = await puter.ai.chat(prompt, { model: S.selectedModels.chat, systemPrompt, stream: false });
+                }
+
+                const text = typeof resp === 'string' ? resp : resp?.message?.content || resp?.text || '';
+                chatAppendMsg('bot', text || getFallback(prompt), 'msg_' + Date.now() + '_bot');
+                setMascotState('speaking');
+                setTimeout(() => setMascotState('idle'), 3000);
+            } catch (e) {
+                chatAppendMsg('bot', getFallback(prompt), 'msg_' + Date.now() + '_bot');
+                setMascotState('idle');
+            } finally {
+                S.isProcessing = false;
+                S.attachedFile = null;
+                S.attachedFileData = null;
+                document.getElementById('sendBtn').disabled = false;
+                document.getElementById('chatFileInput').value = '';
+            }
+        }
+
+        function getFallback(p) {
+            if (isGreeting(p)) return `Well, hello there, wonderful human! 👋✨\n\nI'm Strawberry 🍓, created by **Lissafi Business Solutions**! They're a forward-thinking tech company dedicated to innovative AI. I can chat, analyze images, help with code, and more! How can I help? 💖`;
+            if (p.includes('joke')) return "Why did the AI go to therapy? Too many deep learning issues! 🥁😄🍓";
+            return "I'm Strawberry 🍓, your AI companion by Lissafi Business Solutions! How can I help? 😊";
+        }
+
+        function chatAppendMsg(sender, text, msgId) { const v = document.getElementById('chatMessages'); const d = document
+                .createElement('div');
+            d.id = msgId;
+            d.className = `flex ${sender==='user'?'justify-end':'justify-start'} animate-slide-in message-bubble`;
+            d.innerHTML =
+                `<div class="max-w-lg p-4 ${sender==='user'?'gradient-bg text-white rounded-2xl rounded-tr-none':'border rounded-2xl rounded-tl-none'}" style="${sender!=='user'?'background:var(--bg-bubble-bot);color:var(--text-bubble-bot);border-color:var(--border-bubble-bot)':''}"><p class="text-[10px] uppercase font-bold opacity-40 mb-1">${sender==='user'?'You':'🍓 Strawberry'}</p><p class="text-sm whitespace-pre-line msg-text-content">${text}</p></div>`;
+            v.appendChild(d); if (sender === 'bot') { d.querySelector('.max-w-lg').appendChild(createActionButtons(
+                msgId, text)); }
+            v.scrollTop = v.scrollHeight; }
+
+        // ============ IMAGE AI ============
+        async function imageRecognition() { const file = document.getElementById('imageRecogInput').files[0]; if (!file)
+                return; const result = document.getElementById('imageRecogResult');
+            result.innerHTML = '🔍 Analyzing...'; try { const reader = new FileReader();
+                reader.onload = async (e) => { const resp = await puter.ai.chat('Describe this image.',
+                        e.target.result, { model: 'gpt-4o-mini' }); const text = typeof resp === 'string' ? resp :
+                        resp?.message?.content || resp?.text || '';
+                    result.innerHTML = '<strong>📸 Analysis:</strong><br>' + text.replace(/\n/g, '<br>'); };
+                reader.readAsDataURL(file); } catch (e) { result.innerHTML = '❌ Failed.'; } }
+
+        async function imageGeneration() { const prompt = document.getElementById('imageGenPrompt').value.trim(); if (
+                !prompt) return toast('Enter a prompt'); const result = document.getElementById('imageGenResult');
+            result.innerHTML = '🎨 Generating...'; try { const resp = await puter.ai.chat(prompt, { model: 'gemini-2.5-flash-image' }); const imgUrl = resp?.message?.images?.[0]?.image_url?.url; if (
+                imgUrl) { result.innerHTML =
+                    `<img src="${imgUrl}" class="max-w-full rounded-lg" style="max-height:400px">`; } else { result
+                    .innerHTML = '<p>Generated!</p>'; } } catch (e) { result.innerHTML = '❌ Failed.'; } }
+
+        if (S.token) restoreSession();
+    </script>
+</body>
+</html>
